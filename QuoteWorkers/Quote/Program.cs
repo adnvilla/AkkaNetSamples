@@ -57,42 +57,52 @@ namespace Quote
                     }
                     ");
 
-            using (var system = ActorSystem.Create("Quote", config))
+            do
             {
-                // DIspatcher && Aggregator
-                var local = system.ActorOf(Props.Create<Aggregator<Response>>("Local").WithRouter(FromConfig.Instance), "localactor");
-                var remote = system.ActorOf(Props.Create<Aggregator<Response>>("Remote").WithRouter(FromConfig.Instance), "remoteactor");
+                using (var system = ActorSystem.Create("Quote", config))
+                {
+                    // DIspatcher && Aggregator
+                    var local = system.ActorOf(
+                        Props.Create<Aggregator<Response>>("Local").WithRouter(FromConfig.Instance), "localactor");
+                    var remote =
+                        system.ActorOf(Props.Create<Aggregator<Response>>("Remote").WithRouter(FromConfig.Instance),
+                            "remoteactor");
 
-                //var f = local.Ask<AggregatedReply<Response>>(new Request { });
+                    //var f = local.Ask<AggregatedReply<Response>>(new Request { });
 
-                //f.ContinueWith(x =>
-                //{
-                //    Console.ForegroundColor = ConsoleColor.Cyan;
-                //    Console.WriteLine("Response Count " + x.Result.Replies.Count + " Hotels: " + x.Result.Replies.SelectMany(y => y.Hotel).Count());
-                //    Console.ResetColor();
-                //    //x.Result.Replies.ForEach(y => Console.WriteLine(y.Hotel));
-                //});
+                    //f.ContinueWith(x =>
+                    //{
+                    //    Console.ForegroundColor = ConsoleColor.Cyan;
+                    //    Console.WriteLine("Response Count " + x.Result.Replies.Count + " Hotels: " + x.Result.Replies.SelectMany(y => y.Hotel).Count());
+                    //    Console.ResetColor();
+                    //    //x.Result.Replies.ForEach(y => Console.WriteLine(y.Hotel));
+                    //});
 
-                //var r = remote.Ask<AggregatedReply<Response>>(new Request { });
+                    //var r = remote.Ask<AggregatedReply<Response>>(new Request { });
 
-                //r.ContinueWith(x =>
-                //{
-                //    Console.ForegroundColor = ConsoleColor.Cyan;
-                //    Console.WriteLine("Response Count " + x.Result.Replies.Count + " Hotels: " + x.Result.Replies.SelectMany(y => y.Hotel).Count());
-                //    Console.ResetColor();
-                //    //x.Result.Replies.ForEach(y => Console.WriteLine(y.Hotel));
-                //});
+                    //r.ContinueWith(x =>
+                    //{
+                    //    Console.ForegroundColor = ConsoleColor.Cyan;
+                    //    Console.WriteLine("Response Count " + x.Result.Replies.Count + " Hotels: " + x.Result.Replies.SelectMany(y => y.Hotel).Count());
+                    //    Console.ResetColor();
+                    //    //x.Result.Replies.ForEach(y => Console.WriteLine(y.Hotel));
+                    //});
 
-                // Listener
-                var replyLocal = system.ActorOf<ResponseActor<AggregatedReply<Response>>>("replyLocal");
-                var replyRemote = system.ActorOf<ResponseActor<AggregatedReply<Response>>>("replyRemote");
+                    // Listener
+                    var replyLocal = system.ActorOf<ResponseActor<AggregatedReply<Response>>>("replyLocal");
+                    var replyRemote = system.ActorOf<ResponseActor<AggregatedReply<Response>>>("replyRemote");
 
-                remote.Tell(new Request(), replyRemote);
+                    remote.Tell(new Request(), replyRemote);
 
-                local.Tell(new Request(), replyLocal);
+                    local.Tell(new Request(), replyLocal);
 
-                Console.ReadKey();
-            }
+                    Console.WriteLine("......");
+                    Console.ReadLine();
+
+                    remote.Tell(PoisonPill.Instance);
+                    local.Tell(PoisonPill.Instance);
+                }
+            } while (Console.ReadLine() != "q");
         }
     }
 }

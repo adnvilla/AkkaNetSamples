@@ -66,6 +66,8 @@ namespace QuoteShared
                             replies.Add(x);
                         }
                     }
+
+                    Sender.Tell(PoisonPill.Instance);
                 }
                 if (_refs.Count == 0) ReplyAndStop(replies);
             });

@@ -19,7 +19,7 @@ namespace QuoteShared
                 
                 if (r.Next(1, DateTime.Now.Millisecond) % 3 != 0)
                 {
-                    var responseCount = r.Next(0, 100);
+                    var responseCount = r.Next(1, 100);
 
                     var response = new Response
                     {
