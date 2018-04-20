@@ -17,11 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetFramework", "NetFramewor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuoteWorkers", "QuoteWorkers", "{57F8C912-868A-40DD-9C03-18E43DE84C2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteNetCore", "QuoteNetCore\QuoteNetCore.csproj", "{1E5DC0B4-2EAA-4BE8-8C89-33F300DF4A22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuoteNetCore", "QuoteNetCore\QuoteNetCore.csproj", "{1E5DC0B4-2EAA-4BE8-8C89-33F300DF4A22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteNetCoreRemote", "QuoteNetCoreRemote\QuoteNetCoreRemote.csproj", "{BB505AA5-2443-46B9-84F3-26D83A1C688F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuoteNetCoreRemote", "QuoteNetCoreRemote\QuoteNetCoreRemote.csproj", "{BB505AA5-2443-46B9-84F3-26D83A1C688F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteNetStandardShared", "QuoteNetStandardShared\QuoteNetStandardShared.csproj", "{D7E9128D-1E99-47F4-908A-A822A881E897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuoteNetStandardShared", "QuoteNetStandardShared\QuoteNetStandardShared.csproj", "{D7E9128D-1E99-47F4-908A-A822A881E897}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{1BA75242-B25E-43EA-A34A-93C6BB296001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteApi", "QuoteApi\QuoteApi.csproj", "{2E5E47A3-D19F-4AF6-9061-F8170497EEB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,10 @@ Global
 		{D7E9128D-1E99-47F4-908A-A822A881E897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7E9128D-1E99-47F4-908A-A822A881E897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7E9128D-1E99-47F4-908A-A822A881E897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5E47A3-D19F-4AF6-9061-F8170497EEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5E47A3-D19F-4AF6-9061-F8170497EEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5E47A3-D19F-4AF6-9061-F8170497EEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5E47A3-D19F-4AF6-9061-F8170497EEB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +74,8 @@ Global
 		{1E5DC0B4-2EAA-4BE8-8C89-33F300DF4A22} = {57F8C912-868A-40DD-9C03-18E43DE84C2C}
 		{BB505AA5-2443-46B9-84F3-26D83A1C688F} = {57F8C912-868A-40DD-9C03-18E43DE84C2C}
 		{D7E9128D-1E99-47F4-908A-A822A881E897} = {57F8C912-868A-40DD-9C03-18E43DE84C2C}
+		{1BA75242-B25E-43EA-A34A-93C6BB296001} = {554C6EA2-AEC3-460F-B88F-2115DDF11941}
+		{2E5E47A3-D19F-4AF6-9061-F8170497EEB9} = {1BA75242-B25E-43EA-A34A-93C6BB296001}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18ACEF66-0BDE-42BC-A512-3521EE4B642C}
